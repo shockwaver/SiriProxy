@@ -147,6 +147,9 @@ Options:
 
     @branch = nil
     @option_parser = OptionParser.new do |opts|
+      opts.on('-L', '--listen ADDRESS',     '[server]   address to listen on (central or node)') do |listen|
+        $APP_CONFIG.listen = listen
+      end
       opts.on('-p', '--port PORT',     '[server]   port number for server (central or node)') do |port_num|
         $APP_CONFIG.port = port_num
       end
