@@ -17,8 +17,8 @@ class SiriProxy
       begin
         listen_addr = $APP_CONFIG.listen || "0.0.0.0"
         puts "Starting SiriProxy on #{listen_addr}:#{$APP_CONFIG.port}.."
-        EventMachine::start_server(listen_addr, $APP_CONFIG.port, SiriProxy::Connection::Iphone) { |conn|
-          $stderr.puts "start conn #{conn.inspect}"
+        EventMachine::start_server(listen_addr, $APP_CONFIG.port, SiriProxy::Connection::Iphone, $APP_CONFIG.upstream_dns) { |conn|
+          puts "[Info - Guzzoni] Starting conneciton #{conn.inspect}" if $LOG_LEVEL < 1
           conn.plugin_manager = SiriProxy::PluginManager.new()
           conn.plugin_manager.iphone_conn = conn
         }
