@@ -46,14 +46,14 @@ class SiriProxy::Plugin::Flexget < SiriProxy::Plugin
   listen_for /download movie (.*)/i do |movie|
 	response = ask "I heard #{movie}, should I set it to download?"
     if(response =~ /yes/i) # sounds good, lets download it
-		sleep 5
+		# sleep 5
 		say "Ok! I will download #{movie}"
-		sleep 5
+		# sleep 5
 		# download code here
-		output = `su - pi -c "flexget --movie-queue add \\"#{movie}\\""`
-		sleep 5
+		# output = `su - pi -c "flexget --movie-queue add \\"#{movie}\\""`
+		# sleep 5
 		# output = output.sub!(/.*\n/i) # strip the first line
-		say "#{output}"
+		# say "#{output}"
 	end
 
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
