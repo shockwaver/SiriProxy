@@ -56,7 +56,7 @@ class SiriProxy::Plugin::Flexget < SiriProxy::Plugin
     if(response =~ /yes/i) # sounds good, lets download it
 		# sleep 5
 		say "Ok! I will download #{movie}"
-		# sleep 5
+		flexget("download", movie)
 		# download code here
 		# output = `su - pi -c "flexget --movie-queue add \\"#{movie}\\""`
 		# sleep 5
