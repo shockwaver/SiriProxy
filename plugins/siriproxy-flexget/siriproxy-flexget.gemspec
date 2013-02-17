@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{A plugin to interface with flexget}
   s.description = %q{This plugin will allow you to request siri to "Download 'movie'" and have it add to your flexget movie queue. Later versions may allow imdb lookup and querying of the queu.}
 
-  s.rubyforge_project = "flexget"
+  s.rubyforge_project = "siriproxy-flexget"
 
   s.files         = `git ls-files 2> /dev/null`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/* 2> /dev/null`.split("\n")
