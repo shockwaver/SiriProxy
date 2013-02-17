@@ -48,7 +48,7 @@ class SiriProxy::Plugin::Flexget < SiriProxy::Plugin
     if(response =~ /yes/i) # sounds good, lets download it
 		say "Ok! I will download #{movie}"
 		# download code here
-		output = `su - pro "flexget --movie-queue add \"#{movie}\""`
+		output = `su - pi "flexget --movie-queue add \"#{movie}\""`
 		output = output.sub!(/.*\n/i) # strip the first line
 		say "#{output}"
 	end
