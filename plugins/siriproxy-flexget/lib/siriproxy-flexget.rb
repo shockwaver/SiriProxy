@@ -15,7 +15,7 @@ class SiriProxy::Plugin::Flexget < SiriProxy::Plugin
     #if you have custom configuration options, process them here!
   end
 
-	def flexget(command, title)
+	def flexget(command, movie)
 		#download
 		if(command =~ "download")
 			# add movie to queue
