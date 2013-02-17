@@ -15,7 +15,7 @@ class SiriProxy::Plugin::Flexget < SiriProxy::Plugin
     #if you have custom configuration options, process them here!
   end
 
-	def flexget(command, movie)
+	def flexget(movie, command="download") # default to download
 		#download
 		if(command =~ "download")
 			# add movie to queue
@@ -56,7 +56,7 @@ class SiriProxy::Plugin::Flexget < SiriProxy::Plugin
     if(response =~ /yes/i) # sounds good, lets download it
 		# sleep 5
 		say "Ok! I will download #{movie}"
-		flexget("download", movie)
+		flexget(movie)
 		# download code here
 		# output = `su - pi -c "flexget --movie-queue add \\"#{movie}\\""`
 		# sleep 5
