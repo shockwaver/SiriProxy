@@ -15,10 +15,18 @@ class SiriProxy::Plugin::Flexget < SiriProxy::Plugin
     #if you have custom configuration options, process them here!
   end
 
+	def flexget(command, title)
+		#download
+		if(command =~ "download")
+			# add movie to queue
+			output = `su - pi -c "flexget --movie-queue add \\"#{movie}\\""`
+		end
+	end
+	
   #get the user's location and display it in the logs
   #filters are still in their early stages. Their interface may be modified
-  filter "SetRequestOrigin", direction: :from_iphone do |object|
-    puts "[Info - User Location] lat: #{object["properties"]["latitude"]}, long: #{object["properties"]["longitude"]}"
+  # filter "SetRequestOrigin", direction: :from_iphone do |object|
+    # puts "[Info - User Location] lat: #{object["properties"]["latitude"]}, long: #{object["properties"]["longitude"]}"
 
     #Note about returns from filters:
     # - Return false to stop the object from being forwarded
@@ -48,6 +56,8 @@ class SiriProxy::Plugin::Flexget < SiriProxy::Plugin
     if(response =~ /yes/i) # sounds good, lets download it
 		# sleep 5
 		say "Ok! I will download #{movie}"
+		request_completed
+		flexget("download", movie)
 		# sleep 5
 		# download code here
 		# output = `su - pi -c "flexget --movie-queue add \\"#{movie}\\""`
