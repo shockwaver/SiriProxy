@@ -43,7 +43,7 @@ class SiriProxy::Plugin::Flexget < SiriProxy::Plugin
   # end
 
   #demonstrate state change
-  listen_for /download.*movie.*(.*)/i do |movie|
+  listen_for /download movie (.*)/i do |movie|
 	response = ask "I heard #{movie}, should I set it to download?"
     if(response =~ /yes/i) # sounds good, lets download it
 		say "Ok! I will download #{movie}"
